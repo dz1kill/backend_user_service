@@ -85,7 +85,7 @@ paths:
         500:
           description: Server error.
 
-  /api/admin/block_user/{id}:
+  /api/admin/disable_user/{id}:
     patch:
       security:
         - bearerAuth: []
@@ -107,6 +107,38 @@ paths:
           description: User not found
         403:
           description: Insufficient permissions
+        500:
+          description: Server error.
+
+  /api/user/get_my_profile:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      summary: Get my profile.
+
+      responses:
+        201:
+          description: Succes.
+        404:
+          description: User not found
+        500:
+          description: Server error.
+
+  /api/user/self_deactivate:
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      summary: Block yourself.
+
+      responses:
+        201:
+          description: Blocked succes.
+        404:
+          description: User not found
         500:
           description: Server error.
 

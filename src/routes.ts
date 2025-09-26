@@ -1,7 +1,9 @@
 import * as express from "express";
 import { auth } from "./auth/router";
-import { users } from "./admin/routes";
+import { admin } from "./admin/routes";
+import { user } from "./user/routes";
 
 export const router: express.IRouter = express.Router();
 router.use("/auth", auth);
-router.use("/admin", users);
+router.use("/admin", admin);
+router.use("/user", user);

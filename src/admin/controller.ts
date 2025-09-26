@@ -3,7 +3,7 @@ import { blockUser, getAllUsers, getUser } from "./service";
 import { User } from "../models/user";
 import {
   AuthorizedReq,
-  BlockUserByIdRequest,
+  DisableUserByIdRequest,
   GetUserByIdRequest,
 } from "./types";
 
@@ -31,8 +31,8 @@ export async function getUserById(
   }
 }
 
-export async function blockUserById(
-  req: BlockUserByIdRequest,
+export async function disableUserById(
+  req: DisableUserByIdRequest,
   res: Response<string>
 ) {
   try {

@@ -10,6 +10,6 @@ export interface GetUserByIdRequest extends AuthorizedReq {
   params: { id: string };
 }
 
-export interface BlockUserByIdRequest extends AuthorizedReq {
+export interface DisableUserByIdRequest extends AuthorizedReq {
   params: { id: string };
 }
