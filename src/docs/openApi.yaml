@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: User service.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+paths:
+  /api/auth/sing-up:
+    post:
+      tags:
+        - Auth
+      summary: Registration user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/singUpUser"
+      responses:
+        201:
+          description: User registered.
+        400:
+          description: User with this email already exists or  date of birth cannot be in the future.
+        500:
+          description: Server error.
+
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Authorization user .
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/loginUser"
+      responses:
+        201:
+          description: Token created.
+        401:
+          description: Invalid credentials.
+        500:
+          description: Server error.
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    singUpUser:
+      type: object
+      additionalProperties: false
+      required:
+        - password
+        - email
+      properties:
+        firstName:
+          type: string
+          description: User first name (no spaces allowed)
+          example: Don
+          pattern: '^\S+$'
+        lastName:
+          type: string
+          description: User last name (no spaces allowed)
+          example: Stell
+          pattern: '^\S+$'
+        patronymic:
+          type: string
+          description: User patronymic name (no spaces allowed)
+          example: Ivanovich
+          pattern: '^\S+$'
+        dateOfBirth:
+          type: string
+          format: date
+          pattern: '^\d{4}-\d{2}-\d{2}$'
+          description: User date of birth in YYYY-MM-DD format
+          example: "1990-01-15"
+        email:
+          type: string
+          description: User email
+          example: admin@example.com
+          pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        password:
+          type: string
+          description: User password (no spaces and sybol allowed)
+          example: "1234"
+          pattern: "^[a-zA-Z0-9]+$"
+
+    loginUser:
+      type: object
+      additionalProperties: false
+      required:
+        - password
+        - email
+      properties:
+        email:
+          type: string
+          description: User email
+          example: admin@example.com
+        password:
+          type: string
+          description: Password user.
+          example: "1234"

@@ -13,12 +13,12 @@ const app: express.Application = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/doc", swaggerUI.serve, swaggerUI.setup(apiSpec));
-// app.use(
-//   OpenApiValidator.middleware({
-//     apiSpec,
-//     validateRequests: true,
-//   })
-// );
+app.use(
+  OpenApiValidator.middleware({
+    apiSpec,
+    validateRequests: true,
+  })
+);
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({

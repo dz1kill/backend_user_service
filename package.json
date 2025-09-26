@@ -24,9 +24,11 @@
   },
   "homepage": "https://github.com/dz1kill/backend_user_service#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "config": "^4.1.1",
     "express": "^5.1.0",
     "express-openapi-validator": "^5.6.0",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.3",
     "sequelize-cli": "^6.6.3",
     "sequelize-typescript": "^2.1.6",
@@ -34,8 +36,10 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/config": "^3.3.5",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.5.2",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2"

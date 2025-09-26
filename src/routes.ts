@@ -1,4 +1,5 @@
 import * as express from "express";
+import { auth } from "./auth/router";
 
 export const router: express.IRouter = express.Router();
-//router.use("/use-cases", useСases);
+router.use("/auth", auth);
